@@ -8,6 +8,22 @@ on:
     branches:
       - main
 jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install python requirements
+        run: pip3 install ansible[docker]
+      - name: Wtf is the playbook?
+        run: find / -name "playbook.yml"
+      - name: Apply locally
+        run: ansible-playbook -c local -i localhost, ${PWD}/test/examples/three-node-cluster/playbook.yml
+        env:
+          ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
   release:
     name: Release
     runs-on: ubuntu-latest
