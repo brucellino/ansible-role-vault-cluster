@@ -35,3 +35,14 @@
     state: present
     create_home: false
     system: true
+
+- name: Ensure Vault directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0770
+    owner: "{{ vault_user_name }}"
+    group: "{{ vault_group_name }}"
+  loop:
+    - "{{ vault_config_dir }}"
+    - "{{ vault_raft_dir }}"

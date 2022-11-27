@@ -13,4 +13,17 @@ def test_vault_config_dir(host):
     assert vault_config_dir.is_directory
     assert vault_config_dir.user == "vault"
     assert vault_config_dir.group == "vault"
-    assert vault_config_dir.mode == "0o644"
+    assert vault_config_dir.mode == "0o770"
+
+def test_vault_raft_dir(host):
+    """_Vault raft dir_
+
+    Args:
+        host (_string_): _Test whether the vault raft dir is properly configured_
+    """
+    vault_raft_dir = host.file("/vault")
+    assert vault_config_dir.exists
+    assert vault_config_dir.is_directory
+    assert vault_config_dir.user == "vault"
+    assert vault_config_dir.group == "vault"
+    assert vault_config_dir.mode == "0o770"

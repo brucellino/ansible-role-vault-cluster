@@ -19,3 +19,8 @@ vault_bin_dest: /usr/bin
 vault_group_name: vault
 # Linux user that will execute Vault service
 vault_user_name: vault
+
+# Directory where we store the vault server configuration
+vault_config_dir: /etc/vault.d
+# Directory where Vault will write Raft data
+vault_raft_dir: /vault
