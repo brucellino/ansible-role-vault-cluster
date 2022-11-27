@@ -34,7 +34,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 'lts/16'
+          node-version: 'lts/gallium'
       - name: add semantic release plugins
         run: |
           npm install -D '@semantic-release/changelog' \
