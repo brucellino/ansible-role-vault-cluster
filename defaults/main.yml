@@ -8,6 +8,7 @@ vault_version: 1.12.1
 vault_arch:
   aarch64: arm64
   armv6l: arm
+  x86_64: amd64
 # Base url for all Hashicorp releases
 hashi_releases_url: https://releases.hashicorp.com
 # Composed URL string for the release artifact to install
