@@ -1,2 +1,21 @@
 ---
 # defaults file for ansible-role-template
+# By default, do not follow the apt-install method
+apt_install: false
+# Vault version we want to deploy
+vault_version: 1.12.1
+# Map of ansible_arch to vault release architecture
+vault_arch:
+  aarch64: arm64
+  armv6l: arm
+# Base url for all Hashicorp releases
+hashi_releases_url: https://releases.hashicorp.com
+# Composed URL string for the release artifact to install
+vault_bin_url: |
+  "[
+    {{ hashi_releases_url }},
+    vault,
+    {{ vault_version }},
+    vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_arch] }}.zip
+  ] | join('/')"
+vault_bin_dest: /usr/bin

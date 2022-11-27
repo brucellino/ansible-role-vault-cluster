@@ -1,0 +1,19 @@
+---
+- name: Ensure Hashi GPG key
+  ansible.builtin.apt_key:
+    id: hashicorp
+    keyring: hashicorp
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+    validate_certs: true
+  when: apt_install | bool
+- name: Ensure Vault binary
+  ansible.builtin.unarchive:
+    src: "{{ vault_bin_url }}"
+    dest: "{{ vault_bin_dest }}"
+    creates: "{{ vault_bin_dest }}/vault"
+    remote_src: true
+    validate_certs: true
+    mode: 0777
+    owner: root
+    group: root

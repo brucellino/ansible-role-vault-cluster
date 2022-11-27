@@ -1,0 +1,16 @@
+---
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install python requirements
+        run: pip3 install ansible[docker]
