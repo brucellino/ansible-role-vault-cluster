@@ -12,11 +12,5 @@ vault_arch:
 # Base url for all Hashicorp releases
 hashi_releases_url: https://releases.hashicorp.com
 # Composed URL string for the release artifact to install
-vault_bin_url: >-
-  "[
-    {{ hashi_releases_url }},
-    vault,
-    {{ vault_version }},
-    vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_architecture] }}.zip
-  ] | join('/')"
+vault_bin_url: "{{ hashi_releases_url }}/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_architecture] }}.zip" # noqa yaml[line-length]
 vault_bin_dest: /usr/bin
