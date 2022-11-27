@@ -14,3 +14,8 @@ hashi_releases_url: https://releases.hashicorp.com
 # Composed URL string for the release artifact to install
 vault_bin_url: "{{ hashi_releases_url }}/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_architecture] }}.zip" # noqa yaml[line-length]
 vault_bin_dest: /usr/bin
+
+# Linux group that will execute Vault service
+vault_group_name: vault
+# Linux user that will execute Vault service
+vault_user_name: vault

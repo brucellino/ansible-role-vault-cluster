@@ -7,6 +7,7 @@
     state: present
     validate_certs: true
   when: apt_install | bool
+
 - name: Ensure Vault binary
   ansible.builtin.unarchive:
     src: "{{ vault_bin_url }}"
@@ -17,3 +18,20 @@
     mode: 0777
     owner: root
     group: root
+
+- name: Ensure Vault group
+  ansible.builtin.group:
+    name: "{{ vault_group_name }}"
+    state: present
+    system: true
+
+- name: Ensure Vault user
+  ansible.builtin.user:
+    name: "{{ vault_user_name }}"
+    comment: "System User for Vault. Managed by Ansible"
+    group: "{{ vault_group_name }}"
+    groups: ["{{ vault_group_name }}"]
+    append: true
+    state: present
+    create_home: false
+    system: true
