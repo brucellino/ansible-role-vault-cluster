@@ -14,3 +14,7 @@ jobs:
     steps:
       - name: Install python requirements
         run: pip3 install ansible[docker]
+      - name: Apply locally
+        run: ansible-playbook -c local -i localhost, examples/three-node-cluster/playbook.yml
+        env:
+          ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
