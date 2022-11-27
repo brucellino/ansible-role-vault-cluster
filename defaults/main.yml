@@ -11,7 +11,7 @@ vault_arch:
 # Base url for all Hashicorp releases
 hashi_releases_url: https://releases.hashicorp.com
 # Composed URL string for the release artifact to install
-vault_bin_url: |
+vault_bin_url: >-
   "[
     {{ hashi_releases_url }},
     vault,
