@@ -13,7 +13,7 @@ def test_vault_raft_dir(host):
     assert vault_config_dir.is_directory
     assert vault_config_dir.user == "vault"
     assert vault_config_dir.group == "vault"
-    assert vault_config_dir.mode == "0o770"
+    assert vault_config_dir.mode == 0o770
 
 def test_vault_raft_dir(host):
     """_Vault raft dir_
@@ -26,4 +26,4 @@ def test_vault_raft_dir(host):
     assert vault_raft_dir.is_directory
     assert vault_raft_dir.user == "vault"
     assert vault_raft_dir.group == "vault"
-    assert vault_raft_dir.mode == "0o770"
+    assert vault_raft_dir.mode == 0o770
