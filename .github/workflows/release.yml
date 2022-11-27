@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install python requirements
-        run: pip3 install ansible[docker]
+        run: python3 -m pip install -r ${PWD}/.github/workflows/requirements.txt
       - name: Apply locally
         run: ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
         env:
