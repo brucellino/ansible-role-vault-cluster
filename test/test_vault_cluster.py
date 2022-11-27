@@ -27,3 +27,16 @@ def test_vault_raft_dir(host):
     assert vault_raft_dir.user == "vault"
     assert vault_raft_dir.group == "vault"
     assert vault_raft_dir.mode == 0o770
+
+def test_vault_config_file(host):
+    """_Vault Configuration File_
+
+    Args:
+        host (_string_): _Check that configuration file is present_
+    """
+
+    vault_config_file = host.file("/etc/vault.d/vault.hcl")
+    assert vault_config_file.exists
+    assert vault_config_file.is_file
+    assert vault_config_file.user == "vault"
+    assert vault_config_file.group == "vault"

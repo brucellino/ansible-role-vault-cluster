@@ -1,0 +1,14 @@
+- name: Template configuration file
+  ansible.builtin.template:
+    src: etc/vault.d/vault.hcl.j2
+    dest: /etc/vault.d/vault.hcl
+    mode: 0644
+    owner: "{{ vault_user_name }}"
+    group: "{{ vault_group_name }}"
+    block_start_string: "[% "
+    block_end_string: "%]"
+    variable_start_string: "[["
+    variable_end_string: "]]"
+    trim_blocks: true
+    output_encoding: utf-8
+    # validate:
