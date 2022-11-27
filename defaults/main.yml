@@ -16,6 +16,6 @@ vault_bin_url: |
     {{ hashi_releases_url }},
     vault,
     {{ vault_version }},
-    vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_arch] }}.zip
+    vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_architecture] }}.zip
   ] | join('/')"
 vault_bin_dest: /usr/bin
