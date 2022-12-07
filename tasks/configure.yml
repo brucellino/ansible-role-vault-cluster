@@ -1,7 +1,7 @@
 - name: Template configuration file
   ansible.builtin.template:
-    src: etc/vault.d/vault.hcl.j2
-    dest: "{{ vault_config_dir }}/vault.hcl"
+    src: etc/vault.d/config.hcl.j2
+    dest: "{{ vault_config_dir }}/config.hcl"
     mode: 0644
     owner: "{{ vault_user_name }}"
     group: "{{ vault_group_name }}"
