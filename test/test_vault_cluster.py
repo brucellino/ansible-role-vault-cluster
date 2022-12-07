@@ -35,7 +35,7 @@ def test_vault_config_file(host):
         host (_string_): _Check that configuration file is present_
     """
 
-    vault_config_file = host.file("/etc/vault.d/vault.hcl")
+    vault_config_file = host.file("/etc/vault.d/config.hcl")
     assert vault_config_file.exists
     assert vault_config_file.is_file
     assert vault_config_file.user == "vault"
