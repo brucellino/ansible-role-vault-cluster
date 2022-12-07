@@ -22,6 +22,8 @@ jobs:
         run: ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
+      - name: Check stuff
+        run: find / -name "*.hcl"
       - name: Run Tests
         run: py.test ${PWD}/test
   release:
