@@ -8,9 +8,28 @@ on:
     branches:
       - main
 jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install python requirements
+        run: python3 -m pip install -r ${PWD}/.github/workflows/requirements.txt
+      - name: Apply locally
+        run: ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
+        env:
+          ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
+      - name: Check stuff
+        run: whoami ; sudo find / -name "*.hcl"
+      - name: Run Tests
+        run: py.test ${PWD}/test
   release:
     name: Release
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,12 +38,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 'lts/*'
+          node-version: 'lts/gallium'
       - name: add semantic release plugins
         run: |
           npm install -D '@semantic-release/changelog' \
                           '@semantic-release/git'
-
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

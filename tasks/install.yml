@@ -1,0 +1,48 @@
+---
+- name: Ensure Hashi GPG key
+  ansible.builtin.apt_key:
+    id: hashicorp
+    keyring: hashicorp
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+    validate_certs: true
+  when: apt_install | bool
+
+- name: Ensure Vault binary
+  ansible.builtin.unarchive:
+    src: "{{ vault_bin_url }}"
+    dest: "{{ vault_bin_dest }}"
+    creates: "{{ vault_bin_dest }}/vault"
+    remote_src: true
+    validate_certs: true
+    mode: 0777
+    owner: root
+    group: root
+
+- name: Ensure Vault group
+  ansible.builtin.group:
+    name: "{{ vault_group_name }}"
+    state: present
+    system: true
+
+- name: Ensure Vault user
+  ansible.builtin.user:
+    name: "{{ vault_user_name }}"
+    comment: "System User for Vault. Managed by Ansible"
+    group: "{{ vault_group_name }}"
+    groups: ["{{ vault_group_name }}"]
+    append: true
+    state: present
+    create_home: false
+    system: true
+
+- name: Ensure Vault directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0770
+    owner: "{{ vault_user_name }}"
+    group: "{{ vault_group_name }}"
+  loop:
+    - "{{ vault_config_dir }}"
+    - "{{ vault_raft_dir }}"

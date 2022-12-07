@@ -1,19 +1,18 @@
 galaxy_info:
-  role_name: template
+  role_name: vault_cluster
+  namespace: brucellino
   author: Bruce Becker
-  description: Ansible role template
-  company: HaH
+  description: Ansible role for Hashicorp Vault cluster deployment
+  company: Hashi@Home
   license: MIT
   min_ansible_version: "2.9"
   platforms:
-    - name: Fedora
-      versions:
-        - "36"
     - name: Ubuntu
       versions:
         - focal
         - bionic
-
+        - jammy
   galaxy_tags:
-    - template
+    - hashicorp
+    - vault
 dependencies: []
