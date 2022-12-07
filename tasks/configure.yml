@@ -20,7 +20,7 @@
     mode: 0644
     owner: "{{ vault_user_name }}"
     group: "{{ vault_group_name }}"
-    validate: systemd-analyze verify %s
+    # validate: systemd-analyze verify %s
   notify: systemd reload
 
 - name: Enable Vault service
