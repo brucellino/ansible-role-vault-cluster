@@ -25,7 +25,7 @@ jobs:
       - name: Check stuff
         run: whoami ; sudo find / -name "*.hcl"
       - name: Run Tests
-        run: sudo py.test ${PWD}/test
+        run: sudo -E py.test ${PWD}/test
   release:
     name: Release
     runs-on: ubuntu-latest
