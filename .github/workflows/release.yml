@@ -23,7 +23,7 @@ jobs:
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Check stuff
-        run: find / -name "*.hcl"
+        run: whoami ; sudo find / -name "*.hcl"
       - name: Run Tests
         run: py.test ${PWD}/test
   release:
