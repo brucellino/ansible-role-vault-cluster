@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install python requirements
-        run: python3 -m pip install -r ${PWD}/.github/workflows/requirements.txt
+        run: sudo -H python3 -m pip install -r ${PWD}/.github/workflows/requirements.txt
       - name: Apply locally
         run: ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
         env:
@@ -25,7 +25,7 @@ jobs:
       - name: Check stuff
         run: whoami ; sudo find / -name "*.hcl"
       - name: Run Tests
-        run: py.test ${PWD}/test
+        run: sudo -E py.test ${PWD}/test
   release:
     name: Release
     runs-on: ubuntu-latest
