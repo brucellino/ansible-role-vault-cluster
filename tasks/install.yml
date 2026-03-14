@@ -1,7 +1,7 @@
 ---
 - name: Ensure prerequisites
   ansible.builtin.package:
-    name: "{{ prerequisites[ansible_distribution | lower] }}"
+    name: "{{ prerequisites[ansible_facts.distribution | lower] }}"
     state: present
 - name: Ensure Hashi GPG key
   ansible.builtin.apt_key:
