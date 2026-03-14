@@ -6,8 +6,8 @@ prek = "latest"
 uv = "latest"
 python = "3.14"
 node = "24"
-"npm:semantic-release/changelog" = "6.0.3"
-"npm:semantic-release/git" = "10.0.3"
+"npm:@semantic-release/changelog" = "6.0.3"
+"npm:@semantic-release/git" = "10.0.3"
 
 [tasks.deps]
 run = "uv pip install -r requirements.txt"
