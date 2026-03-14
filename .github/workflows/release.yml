@@ -25,7 +25,12 @@ jobs:
       - name: Install requirements
         run: mise tasks run deps
       - name: Apply locally
-        run: mise trust -y ; ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
+        run: |
+          mise trust -y
+          mise doctor
+          which ansible-playbook
+          eval "$(mise activate)"
+          ansible-playbook -c local -i localhost, test/playbook.yml
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Check stuff
