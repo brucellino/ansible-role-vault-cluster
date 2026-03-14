@@ -23,9 +23,9 @@ jobs:
           experimental: true
           cache: true
       - name: Install requirements
-        run: mise trust ; mise tasks run deps
+        run: mise tasks run deps
       - name: Apply locally
-        run: ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
+        run: mise trust -y ; ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Check stuff
