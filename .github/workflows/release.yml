@@ -16,8 +16,14 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Install python requirements
-        run: sudo -H python3 -m pip install -r ${PWD}/.github/workflows/requirements.txt
+      - name: Configure Mise
+        uses: mise/mise-action@v3
+        with:
+          install: true
+          experimental: true
+          cache: true
+      - name: Install requirements
+        run: mise tasks run deps
       - name: Apply locally
         run: ansible-playbook -c local -i localhost, ${PWD}/test/playbook.yml
         env:
@@ -35,10 +41,12 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Configure Mise
+        uses: mise/mise-action@v3
         with:
-          node-version: 'lts/gallium'
+          install: true
+          experimental: true
+          cache: true
       - name: add semantic release plugins
         run: |
           npm install -D '@semantic-release/changelog' \
