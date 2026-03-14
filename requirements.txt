@@ -1,6 +1,6 @@
-ansible==13.2.0
+ansible==13.4.0
 pytest-testinfra==10.2.2
-ansible-lint==5.4.0
+ansible-lint==26.3.0
 hvac==1.0.2
 jmespath==1.0.1
 pyhcl==0.4.4
