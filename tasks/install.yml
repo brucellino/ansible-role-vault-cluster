@@ -1,4 +1,8 @@
 ---
+- name: Ensure prerequisites
+  ansible.builtin.package:
+    name: "{{ prerequisites[ansible_distribution | lower] }}"
+    state: present
 - name: Ensure Hashi GPG key
   ansible.builtin.apt_key:
     id: hashicorp
@@ -15,7 +19,7 @@
     creates: "{{ vault_bin_dest }}/vault"
     remote_src: true
     validate_certs: true
-    mode: 0777
+    mode: "0777"
     owner: root
     group: root
 
@@ -40,7 +44,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0770
+    mode: "0770"
     owner: "{{ vault_user_name }}"
     group: "{{ vault_group_name }}"
   loop:

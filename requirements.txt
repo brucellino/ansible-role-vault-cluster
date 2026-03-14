@@ -1,0 +1,10 @@
+ansible==13.2.0
+pytest-testinfra==10.2.2
+ansible-lint==5.4.0
+hvac==1.0.2
+jmespath==1.0.1
+pyhcl==0.4.4
+PyNaCl==1.4.0
+pytest==6.2.4
+python-consul==1.1.0
+toml==0.10.2

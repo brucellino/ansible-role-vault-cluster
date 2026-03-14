@@ -21,7 +21,7 @@ Capabilities=CAP_IPC_LOCK+ep
 CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
 NoNewPrivileges=yes
 Environment="GODEBUG=x509ignoreCN=0"
-ExecStart={{ vault_bin_dest }}}vault server -config={{ vault_config_dir }}/vault.hcl
+ExecStart={{ vault_bin_dest }}}/vault server -config={{ vault_config_dir }}/vault.hcl
 ExecReload=/bin/kill --signal HUP $MAINPID
 KillMode=process
 KillSignal=SIGINT

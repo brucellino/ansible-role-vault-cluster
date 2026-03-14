@@ -1,9 +1,16 @@
 ---
 # defaults file for ansible-role-template
+prerequisites:
+  ubuntu:
+    - curl
+    - bzip2
+    - gzip
+    - pigz
+    - unzip
 # By default, do not follow the apt-install method
 apt_install: false
 # Vault version we want to deploy
-vault_version: 1.12.1
+vault_version: 1.13.0
 # Map of ansible_arch to vault release architecture
 vault_arch:
   aarch64: arm64
