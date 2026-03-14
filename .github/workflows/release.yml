@@ -26,13 +26,10 @@ jobs:
         run: mise tasks run deps
       - name: Apply locally
         run: |
-          mise trust -y
           eval "$(mise activate)"
           ansible-playbook -c local -i localhost, test/playbook.yml
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
-      - name: Check stuff
-        run: whoami ; sudo find / -name "*.hcl"
       - name: Run Tests
         run: sudo -E py.test ${PWD}/test
   release:
@@ -50,10 +47,6 @@ jobs:
           install: true
           experimental: true
           cache: true
-      - name: add semantic release plugins
-        run: |
-          npm install -D '@semantic-release/changelog' \
-                          '@semantic-release/git'
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
