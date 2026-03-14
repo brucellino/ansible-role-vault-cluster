@@ -31,7 +31,7 @@ jobs:
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Run Tests
-        run: sudo -E py.test ${PWD}/test
+        run: py.test ${PWD}/test
   release:
     name: Release
     runs-on: ubuntu-latest
