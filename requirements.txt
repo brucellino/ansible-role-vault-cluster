@@ -4,7 +4,7 @@ ansible-lint==5.4.0
 hvac==1.0.2
 jmespath==1.0.1
 pyhcl==0.4.4
-PyNaCl==1.4.0
+PyNaCl==1.6.2
 pytest==6.2.4
 python-consul==1.1.0
 toml==0.10.2
