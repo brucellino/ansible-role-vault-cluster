@@ -27,8 +27,6 @@ jobs:
       - name: Apply locally
         run: |
           mise trust -y
-          mise doctor
-          which ansible-playbook
           eval "$(mise activate)"
           ansible-playbook -c local -i localhost, test/playbook.yml
         env:

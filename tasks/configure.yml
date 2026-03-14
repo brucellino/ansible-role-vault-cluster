@@ -6,6 +6,7 @@
     privatekey_path: "{{ vault_config_dir }}/vault-key.pem"
     csr_path: "{{ vault_config_dir }}/vault.csr"
     provider: selfsigned
+  failed_when: false
 
 - name: Template configuration file
   ansible.builtin.template:
