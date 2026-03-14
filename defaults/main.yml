@@ -10,7 +10,7 @@ prerequisites:
 # By default, do not follow the apt-install method
 apt_install: false
 # Vault version we want to deploy
-vault_version: 1.13.0
+vault_version: 1.21.4
 # Map of ansible_arch to vault release architecture
 vault_arch:
   aarch64: arm64
@@ -19,7 +19,7 @@ vault_arch:
 # Base url for all Hashicorp releases
 hashi_releases_url: https://releases.hashicorp.com
 # Composed URL string for the release artifact to install
-vault_bin_url: "{{ hashi_releases_url }}/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ ansible_system | lower }}_{{ vault_arch[ansible_architecture] }}.zip" # noqa yaml[line-length]
+vault_bin_url: "{{ hashi_releases_url }}/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ ansible_facts.system | lower }}_{{ vault_arch[ansible.architecture] }}.zip" # noqa yaml[line-length]
 vault_bin_dest: /usr/bin
 
 # Linux group that will execute Vault service

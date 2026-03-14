@@ -1,5 +1,13 @@
 ---
 # Vault configuration tasks file
+- name: Ensure vault configuration directory exists
+  ansible.builtin.file:
+    path: "{{ vault_config_dir }}"
+    state: directory
+    owner: "{{ vault_user_name }}"
+    group: "{{ vault_group_name }}"
+    mode: "0755"
+
 - name: Generate a Self Signed OpenSSL certificate
   community.crypto.x509_certificate:
     path: "{{ vault_config_dir }}}/vault-cert.pem"
