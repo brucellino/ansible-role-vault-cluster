@@ -1,6 +1,7 @@
 ---
 - name: Deploy Vault
   hosts: localhost
+  connection: local
   become: true
   roles:
     - ansible-role-vault-cluster
