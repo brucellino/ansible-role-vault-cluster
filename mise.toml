@@ -4,7 +4,7 @@ _.python.venv = { path = ".venv", create = true }
 [tools]
 prek = "latest"
 uv = "latest"
-python = "3.13"
+python = "3.14"
 node = "24"
 "npm:@semantic-release/changelog" = "6.0.3"
 "npm:@semantic-release/git" = "10.0.1"
