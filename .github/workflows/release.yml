@@ -31,7 +31,10 @@ jobs:
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Run Tests
-        run: py.test ${PWD}/test
+        run: |
+          eval "$(mise activate)"
+          which py.test
+          py.test --sudo ${PWD}/test
   release:
     name: Release
     runs-on: ubuntu-latest
