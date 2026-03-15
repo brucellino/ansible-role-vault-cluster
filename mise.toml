@@ -17,3 +17,10 @@ node = "24"
 
 [tasks.deps]
 run = "uv pip install -r requirements.txt"
+
+[tasks.release_deps]
+run = "npm i semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/github"
+
+[tasks.release]
+run = "semantic-release"
+depends = ["release_deps"]
