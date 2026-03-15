@@ -1,5 +1,6 @@
 [env]
 _.python.venv = { path = ".venv", create = true }
+_.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
 prek = "latest"
