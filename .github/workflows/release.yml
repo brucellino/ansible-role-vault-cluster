@@ -31,7 +31,10 @@ jobs:
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Run Tests
-        run: py.test ${PWD}/test
+        run: |
+          eval "$(mise activate)"
+          which py.test
+          py.test --sudo ${PWD}/test
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -50,4 +53,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: mise tasks run release
