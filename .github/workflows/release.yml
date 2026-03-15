@@ -55,4 +55,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           eval "$(mise activate)"
-          npx semantic-release
+          semantic-release
