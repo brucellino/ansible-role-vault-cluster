@@ -10,7 +10,7 @@ on:
 jobs:
   test:
     name: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Check out code
         uses: actions/checkout@v7
@@ -25,19 +25,14 @@ jobs:
       - name: Install requirements
         run: mise tasks run deps
       - name: Apply locally
-        run: |
-          eval "$(mise activate)"
-          ansible-playbook -c local -i localhost, test/playbook.yml
+        run: ansible-playbook -c local -i localhost, test/playbook.yml
         env:
           ANSIBLE_ROLES_PATH: "${GITHUB_WORKSPACE}/../"
       - name: Run Tests
-        run: |
-          eval "$(mise activate)"
-          which py.test
-          py.test --sudo ${PWD}/test
+        run: py.test --sudo ${PWD}/test
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: test
     steps:
       - name: Checkout
@@ -53,4 +48,5 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MISE_ENV: release
         run: mise tasks run release

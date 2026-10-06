@@ -1,0 +1,13 @@
+[env]
+_.path = ['{{config_root}}/node_modules/.bin']
+NODE_PATH = '{{config_root}}/node_modules'
+
+[tools]
+node = "26"
+
+[tasks.release_deps]
+run = "npm i semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/github"
+
+[tasks.release]
+run = "npx semantic-release"
+depends = ["release_deps"]

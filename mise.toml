@@ -1,26 +1,10 @@
 [env]
 _.python.venv = { path = ".venv", create = true }
-_.path = ['{{config_root}}/node_modules/.bin']
-NODE_PATH = '{{config_root}}/node_modules'
 
 [tools]
 prek = "latest"
 uv = "latest"
 python = "3.14"
-node = "24"
-"npm:semantic-release" = "25.0.9"
-"npm:@semantic-release/changelog" = "7.0.0"
-"npm:@semantic-release/git" = "11.0.1"
-"npm:@semantic-release/commit-analyzer" = "13.0.1"
-"npm:@semantic-release/release-notes-generator" = "14.1.1"
-"npm:@semantic-release/github" = "12.0.10"
 
 [tasks.deps]
 run = "uv pip install -r requirements.txt"
-
-[tasks.release_deps]
-run = "npm i semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/github"
-
-[tasks.release]
-run = "semantic-release"
-depends = ["release_deps"]
