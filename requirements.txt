@@ -1,4 +1,4 @@
-ansible==14.4.0
+ansible==14.5.0
 pytest-testinfra==10.2.2
 ansible-lint==26.9.0
 hvac==2.4.0
