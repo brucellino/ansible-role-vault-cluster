@@ -4,7 +4,7 @@ hvac==2.4.0
 jmespath==1.1.0
 pyhcl==0.4.5
 PyNaCl==1.6.2
-pytest==9.1.1
+pytest==9.2.0
 pytest-testinfra==10.2.2
 python-consul==1.1.0
 toml==0.10.2
